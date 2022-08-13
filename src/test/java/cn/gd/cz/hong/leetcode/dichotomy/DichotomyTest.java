@@ -86,4 +86,17 @@ public class DichotomyTest {
         Arrays.sort(array);
         System.out.println("array : " + Arrays.toString(array) + ", num is " + array[2] + ", leftIndex is " + leftIndex(array, array[2]));
     }
+
+    /**
+     * todo 局部最小
+     * 二分法不一定非得用在有序队列上
+     *
+     * @param array 无序数组 相邻数不相等
+     * @return 局部最小的数字 一个即可
+     */
+    public int min(int[] array) {
+        // https://www.bilibili.com/video/BV13g41157hK?p=3&vd_source=eabc2c22ae7849c2c4f31815da49f209
+        // 1:47:51 秒
+        return -1;
+    }
 }
