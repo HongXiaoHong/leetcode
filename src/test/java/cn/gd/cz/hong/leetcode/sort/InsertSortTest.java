@@ -31,10 +31,7 @@ public class InsertSortTest {
         小了继续往前直到前面没有数字或者比前面的数字大了
          */
         for (int i = 1; i < array.length; i++) {
-            for (int j = i; j > 0; j--) {
-                if (array[j] >= array[j - 1]) {
-                    break;
-                }
+            for (int j = i; j > 0 && array[j] < array[j - 1]; j--) {
                 swap(array, j - 1, j);
             }
         }
@@ -48,7 +45,13 @@ public class InsertSortTest {
         sort(randomArray);
         System.out.println("after: ");
         System.out.println(Arrays.toString(randomArray));
-    }
+    }/*
+    test result:
+     before:
+     [15, 143, 99, 395, 492, 194, 457, 576, 638]
+     after:
+     [15, 99, 143, 194, 395, 457, 492, 576, 638]
+     */
 
 
 }
