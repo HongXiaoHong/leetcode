@@ -88,7 +88,7 @@ public class DichotomyTest {
     }
 
     /**
-     * todo 局部最小
+     * 局部最小
      * 二分法不一定非得用在有序队列上
      *
      * @param array 无序数组 相邻数不相等
@@ -97,6 +97,39 @@ public class DichotomyTest {
     public int min(int[] array) {
         // https://www.bilibili.com/video/BV13g41157hK?p=3&vd_source=eabc2c22ae7849c2c4f31815da49f209
         // 1:47:51 秒
+        System.out.println("set is " + Arrays.toString(array));
+        if (array[0] < array[1]) {
+            return 0;
+        }
+        int length = array.length;
+        if (array[length - 1] < array[length - 2]) {
+            return length - 1;
+        }
+        int left = 1;
+        int right = length - 2;
+        while (left != right) {
+            int mid = left + ((right - left) >> 1);
+            if (isMinLocal(array, mid)) {
+                return mid;
+            }
+            if (array[mid - 1] < array[mid]) {
+                right = mid - 1;
+                continue;
+            }
+            left = mid + 1;
+        }
         return -1;
+    }
+
+    private boolean isMinLocal(int[] array, int mid) {
+        return array[mid - 1] > array[mid] && array[mid] < array[mid + 1];
+    }
+
+    @Test
+    public void testMin() {
+//        array 无序数组 相邻数不相等
+        int[] array = {23, 19, 96, 97, 98, 93, 99, 208, 219, 230, 260, 531, 536};
+        System.out.println("minIndex is " + min(array));
+        ;
     }
 }
