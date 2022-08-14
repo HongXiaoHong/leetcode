@@ -31,6 +31,8 @@ public class DichotomyTest {
         int right = sortedArray.length - 1;
         while (left != right) {
             int mid = (left + right) / 2;
+            // 可以优化为 int mid = left + ((right - left) >> 1);
+            // left + right 有可能超出精度 越界计算可能得到负数
             if (sortedArray[mid] == num) {
                 return true;
             }
