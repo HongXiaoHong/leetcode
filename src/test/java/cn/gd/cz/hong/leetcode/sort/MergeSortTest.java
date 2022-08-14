@@ -39,7 +39,7 @@ public class MergeSortTest {
         int rIndex = mid + 1;
         int i = 0;
         while (lIndex <= mid && rIndex <= r) {
-            help[i++] = array[lIndex] < array[rIndex] ? array[lIndex++] : array[rIndex++];
+            help[i++] = array[lIndex] <= array[rIndex] ? array[lIndex++] : array[rIndex++];
         }
         while (lIndex <= mid) {
             help[i++] = array[lIndex++];
