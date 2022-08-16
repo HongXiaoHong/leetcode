@@ -38,7 +38,7 @@ public class HelloHeap {
     }
 
     // 堆化
-    private void heapify(int[] array, int index, int heapSize) {
+    public static void heapify(int[] array, int index, int heapSize) {
         int left = 2 * index + 1;
         while (left < heapSize) {
             int largest = left + 1 < heapSize
