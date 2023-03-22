@@ -10,6 +10,30 @@ import java.util.Arrays;
  */
 public class HelloHeap {
 
+    public void heapInsert(int[] array, int num, int heapSize) {
+        int index = heapSize;
+        while (array[index] > array[(index - 1) / 2]) {
+            ArrayUtils.swap(array, index, (index - 1) / 2);
+            index = (index - 1) / 2;
+        }
+    }
+
+    @Test
+    public void testHeapInsert() {
+        int[] array = new int[10];
+        insertHeap(array, 1, 0);
+        System.out.println("array is  " + Arrays.toString(array));
+        insertHeap(array, 3, 1);
+        System.out.println("array is  " + Arrays.toString(array));
+        insertHeap(array, 8, 2);
+        System.out.println("array is  " + Arrays.toString(array));
+        /* result:->
+         array is  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+         array is  [3, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+         array is  [8, 1, 3, 0, 0, 0, 0, 0, 0, 0]
+         */
+    }
+
     // 插入堆
     public void insertHeap(int[] array, int num, int heapSize) {
         int parentIndex = (heapSize - 1) / 2;
@@ -39,12 +63,12 @@ public class HelloHeap {
 
     // 堆化
     public static void heapify(int[] array, int index, int heapSize) {
-        int left = 2 * index + 1;
-        while (left < heapSize) {
+        int left = 2 * index + 1; // 左子节点
+        while (left < heapSize) { // 当前节点拥有左子树
             int largest = left + 1 < heapSize
                     && array[left] < array[left + 1] ?
-                    left + 1 : left;
-            largest = array[index] > array[largest] ? index : largest;
+                    left + 1 : left; // 左子节点 右子节点哪个大
+            largest = array[index] > array[largest] ? index : largest; // 头结点跟左右节点哪个最大
             if (largest == index) {
                 break;
             }
